@@ -1,0 +1,18 @@
+{% extends 'magasin/base.html'%}
+
+{%block body %}
+<div class="justify-content-center d-flex mt-5">
+    <form method="post" enctype="multipart/form-data" class="col-md-6">
+{% csrf_token%}
+        <input type="text" name="nom" value="{{f.nom}}" class="form-control">
+    
+    <input type="text" name="adresse" value="{{f.adresse}}" class="form-control">
+    
+    <input type="text" name="email" value="{{f.email}}" class="form-control">
+    
+    <input type="text" name="telephone" value="{{f.telephone}}" class="form-control">
+    <input type="submit" name="btn" value="update" class="btn btn-warning">
+    </form>
+</div>
+
+{%endblock%}

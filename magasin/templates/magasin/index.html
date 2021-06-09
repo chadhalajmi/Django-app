@@ -1,0 +1,76 @@
+{% extends 'magasin/base.html' %}
+{% load static %}
+{% block body %} 
+<h1 class="p-5">Dashboard</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+     <div class="card"  >
+  <div class="card-body">
+    <h5 class="card-title">Produits  </h5>
+    <h6 class="card-subtitle mb-2 text-muted"><a class="btn btn-success"  href="#">ajouter</a></h6>
+<table class="table ">
+  <thead>
+    <tr> 
+      <th scope="col">libelle</th>
+      <th scope="col">prix</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  
+    {% for article in list %}
+        <tr>
+      <td>{{article.libelle}}</td>
+      <td>{{article.prix}}</td>
+      
+       <td>  <a href="#"> <i class="fas fa-eye"></i> </a>    </td>
+       </tr>  
+      {% endfor %}
+   
+  </tbody>
+</table>
+  </div>
+</div>
+    </div>
+    <div class="col">
+     <div class="card"  >
+  <div class="card-body">
+    <h5 class="card-title">Commandes</h5>
+      {% comment %} <h6 class="card-subtitle mb-2 text-muted"><a class="btn btn-success" href="{% url 'ajouter_Commande' %}">ajouter</a></h6> {% endcomment %}
+<table class="table ">
+  <thead>
+    <tr>
+        <th>produits</th>
+        <th>totalCde</th>
+        <th>dateCde</th>
+        <th>Duree_garantie</th>
+        <th>Update</th>
+        <th>Remove</th>
+    </tr>
+
+    {% for C in list %}
+
+    <tr>
+        <td>{{C.produits}}</td>
+        <td>{{C.totalCde}}</td>
+        <td>{{C.dateCde}}</td>
+        <td>{{C.Duree_garantie}}</td>
+        <td><a class="btn btn-sm btn-info" href="#">Update</a></td>
+
+        <td><a class="btn btn-sm btn-danger" href="#">Delete</a></td>
+    </tr>
+    {% endfor %}
+      
+   
+  </tbody>
+</table>
+  </div>
+</div>
+    </div>
+  </div>
+ 
+</div>
+
+{% endblock %}

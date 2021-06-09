@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<form method='POST' class="post-form">
+<div class="row">
+{% for post in posts %}
+    <div class="card" style="width: 15rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ post.body }}</h6>
+          <p class="card-text">Publié le {{ post.date }} </p>
+          <a href="" class="card-link">Détails</a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+</form>
+{% endblock %}

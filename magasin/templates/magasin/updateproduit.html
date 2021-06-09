@@ -1,0 +1,39 @@
+{% extends 'magasin/base.html'%}
+
+{%block body%}
+<div class="justify-content-center mt-5 d-flex">
+<form method="post" class="col-md-6" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<input class="form-control mb-2" name="libelle" value="{{p.libelle}}">
+<textarea class="form-control mb-2" name="description">{{p.description}}</textarea>
+<input type="number" step="any" value="{{p.prix}}" name="prix" class="mb-2 form-control">
+<select name="emballage" class="mb-2 form-control">
+    <option></option>
+    {% for emb in e%}
+    {% if emb.id == p.emballag.id%}
+    <option value="{{emb.id}}" selected>{{emb}}</option>
+    {%endif%}
+    {% if emb.id != p.emballag.id%}
+    <option value="{{emb.id}}">{{emb}}</option>
+    {%endif%}
+    {%endfor%}
+</select>
+
+<select name="fournisseur" class="mb-2 form-control">
+    <option></option>
+    {% for forn in f%}
+    {% if forn.id == p.fournisser.id%}
+    <option value="{{forn.id}}" selected>{{forn}}</option>
+    {%endif%}
+    {% if forn.id != p.fournisser.id%}
+    <option value="{{forn.id}}">{{forn}}</option>
+    {%endif%}
+    {%endfor%}
+</select>
+<input type="file" name="image" class="mb-2 form-control">
+<img width="50px" src="{{MEDIA_URL}}{{p.image}}" class="">
+    <input type="submit" name="btn" class="btn btn-warning" value="update">
+</form>
+</div>
+{%endblock%}

@@ -1,0 +1,35 @@
+{% extends 'magasin/base.html' %}
+{% load static %}
+{% block body %}
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+            <h1 style="text-align: center;">Liste des Commandes</h1>
+			<table class="table table-sm">
+				<tr>
+					<th>produits</th>
+					<th>totalCde</th>
+					<th>dateCde</th>
+					<th>Duree_garantie</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for C in list %}
+
+				<tr>
+					<td>{{C.produits}}</td>
+					<td>{{C.totalCde}}</td>
+					<td>{{C.dateCde}}</td>
+					<td>{{C.Duree_garantie}}</td>
+					<td><a class="btn btn-sm btn-info" href="#">Update</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'deletec' C.id %}">Delete</a></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
